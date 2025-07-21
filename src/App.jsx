@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 
+
 import BaseLayout from "./layouts/baseLayout";
 import DashboardLayout from "./layouts/dashboardLayout";
 import AuthPage from "./pages/auth-page";
