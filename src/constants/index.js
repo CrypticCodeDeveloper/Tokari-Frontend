@@ -1,5 +1,5 @@
 
-export const genCodeSnippets = (apiKey) => {
+export const genCodeSnippets = (apiKey, project_origin) => {
 
     return [
   {
@@ -11,7 +11,7 @@ export const genCodeSnippets = (apiKey) => {
 (async () => {
   try {
     const AIresponse = await axios.post(
-      "http://localhost:5500/api/v1/chat-completions",
+      "${import.meta.env.VITE_API_BASE_URL}/api/v1/chat-completions",
       {
         role: "You are a helpful assistant.",
         prompt: "Help me write a poem about nature.",
@@ -36,7 +36,7 @@ export const genCodeSnippets = (apiKey) => {
     language: "Python (Requests)",
     code: `import requests
 
-url = "http://localhost:5500/api/v1/chat-completions"
+url = "${import.meta.env.VITE_API_BASE_URL}/api/v1/chat-completions"
 headers = {
     "x-api-key": "${apiKey}"
 }
@@ -55,9 +55,10 @@ except requests.exceptions.RequestException as e:
   },
   {
     language: "cURL (Command Line)",
-    code: `curl -X POST http://localhost:5500/api/v1/chat-completions \
+    code: `curl -X POST ${import.meta.env.VITE_API_BASE_URL}/api/v1/chat-completions \
   -H "x-api-key: ${apiKey}" \
   -H "Content-Type: application/json" \
+  -H "Origin: ${project_origin}" \
   -d '{
         "role": "You are a helpful assistant.",
         "prompt": "Help me write a poem about nature."
@@ -67,7 +68,7 @@ except requests.exceptions.RequestException as e:
   {
     language: "PHP (cURL)",
     code: `<?php
-$url = "http://localhost:5500/api/v1/chat-completions";
+$url = "${import.meta.env.VITE_API_BASE_URL}/api/v1/chat-completions";
 $data = [
     "role" => "You are a helpful assistant.",
     "prompt" => "Help me write a poem about nature."
@@ -88,45 +89,6 @@ echo $response;
 `,
   },
   {
-    language: "Node.js (Native http module)",
-    code: `const http = require("http");
-
-const data = JSON.stringify({
-  role: "You are a helpful assistant.",
-  prompt: "Help me write a poem about nature."
-});
-
-const options = {
-  hostname: "localhost",
-  port: 5500,
-  path: "/api/v1/chat-completions",
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Content-Length": Buffer.byteLength(data),
-    "x-api-key": "${apiKey}",
-  },
-};
-
-const req = http.request(options, (res) => {
-  let body = "";
-  res.on("data", (chunk) => {
-    body += chunk;
-  });
-  res.on("end", () => {
-    console.log("Response:", body);
-  });
-});
-
-req.on("error", (error) => {
-  console.error("Error:", error);
-});
-
-req.write(data);
-req.end();
-`,
-  },
-  {
     language: "C# (.NET with HttpClient)",
     code: `using System;
 using System.Net.Http;
@@ -143,7 +105,7 @@ class Program
         var json = "{\"role\":\"You are a helpful assistant.\",\"prompt\":\"Help me write a poem about nature.\"}";
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-        var response = await client.PostAsync("http://localhost:5500/api/v1/chat-completions", content);
+        var response = await client.PostAsync("${import.meta.env.VITE_API_BASE_URL}/api/v1/chat-completions", content);
         var responseString = await response.Content.ReadAsStringAsync();
 
         Console.WriteLine("Response: " + responseString);
@@ -157,7 +119,7 @@ class Program
 require 'uri'
 require 'json'
 
-uri = URI.parse("http://localhost:5500/api/v1/chat-completions")
+uri = URI.parse("${import.meta.env.VITE_API_BASE_URL}/api/v1/chat-completions")
 
 header = {
   "Content-Type" => "application/json",

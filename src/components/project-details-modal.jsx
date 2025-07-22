@@ -19,7 +19,7 @@ import DeleteModal from "./delete-modal";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getProjectById } from "../services/endpointRequests";
 
-const ProjectDetailsModal = ({ trigger, title, desc, apiKey, id }) => {
+const ProjectDetailsModal = ({ trigger, title, desc,  id }) => {
   const { data: project } = useSuspenseQuery({
     queryKey: ["project-details", id],
     queryFn: getProjectById,
@@ -52,7 +52,7 @@ const ProjectDetailsModal = ({ trigger, title, desc, apiKey, id }) => {
               />
             </TabsContent>
             <TabsContent value="integration">
-              <IntegrationTabSection apiKey={apiKey} />
+              <IntegrationTabSection project={project} />
             </TabsContent>
             <TabsContent value="settings">
               <SettingsTabSection 
@@ -128,7 +128,7 @@ const BasicTabSection = ({
   );
 };
 
-const IntegrationTabSection = ({ apiKey }) => {
+const IntegrationTabSection = ({ project }) => {
   const [isApiKeyVisible, setIsApiKeyVisible] = useState(false);
 
   return (
@@ -139,7 +139,7 @@ const IntegrationTabSection = ({ apiKey }) => {
           <Input
           className="w-full"
             disabled={!isApiKeyVisible}
-            value={isApiKeyVisible ? apiKey : "*************************"}
+            value={isApiKeyVisible ? project.api_key : "*************************"}
           />
           <div onClick={() => setIsApiKeyVisible((prevState) => !prevState)}>
             {isApiKeyVisible ? <Eye /> : <EyeClosed />}
@@ -148,7 +148,7 @@ const IntegrationTabSection = ({ apiKey }) => {
       </div>
 
       <div className="max-w-[420px] w-[400px] overflow-x-auto mt-6">
-        <CodeSnippets apiKey={apiKey} />
+        <CodeSnippets project={project} />
       </div>
     </section>
   );

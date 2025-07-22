@@ -62,7 +62,6 @@ const Projects = () => {
         ) : <div>
           <h2 className="text-lg">No projects found.</h2>
           <p className="text-sm text-gray-600">Create a new project to get started.</p>
-          <img src="/void.svg" alt="No projects found" className="w-52 h-52 mx-auto mt-10" />
           </div>}
       </div>
     </section>

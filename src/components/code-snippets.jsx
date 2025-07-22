@@ -16,9 +16,9 @@ import {
 
 import { genCodeSnippets } from "../constants";
 
-const CodeSnippets = ({apiKey, className}) => {
+const CodeSnippets = ({ project, className}) => {
   
-  const code = genCodeSnippets(apiKey)
+  const code = genCodeSnippets(project.api_key, project.origin);
   
   return (
 
