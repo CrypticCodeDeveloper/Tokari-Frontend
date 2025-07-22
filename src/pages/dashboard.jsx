@@ -61,7 +61,7 @@ const Dashboard = () => {
       <div className="shadow-xl">
         <CodeSnippets 
         project={{
-          apiKey: "Your api key here",
+          api_key: "Your api key here",
           origin: "https://your-domain.com"
         }}
          />
