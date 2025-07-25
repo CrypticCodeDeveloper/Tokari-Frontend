@@ -52,6 +52,7 @@ api.interceptors.response.use(
         return api(originalRequest);
       } catch (error) {
         console.log("Error: ", error)
+        window.location.href = "/login";
         return Promise.reject(error);
       }
     }

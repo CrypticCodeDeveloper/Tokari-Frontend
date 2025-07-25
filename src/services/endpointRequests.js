@@ -37,3 +37,9 @@ export const loginUser = async (userInfo) => {
     })
     return response.data
 }
+
+export const logout = async () => {
+    await api.post("/api/v1/auth/logout", {}, {
+        withCredentials: true,
+    })
+}

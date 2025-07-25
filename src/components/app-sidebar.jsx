@@ -17,6 +17,9 @@ import { NavLink } from "react-router-dom";
 import AvatarDisplay from "./avatar-display";
 
 import useAuth from "../hooks/useAuth";
+import { logout } from "../services/endpointRequests";
+
+import toast from "react-hot-toast";
 
 // Menu items.
 const items = [
@@ -79,7 +82,17 @@ export function AppSidebar() {
             src={user?.profile_image || ""}
             fallback={initials}
           />
-          <Button variant="destructive">Logout</Button>
+          <Button variant="destructive"
+          onClick={async () => {
+              try {
+                await logout();
+                localStorage.removeItem("token");
+                window.location.href = "/login";
+              } catch {
+                toast.error("Failed to log out. Please try again.");
+              }
+          }}
+          >Logout</Button>
         </div>
       </SidebarFooter>
     </Sidebar>
