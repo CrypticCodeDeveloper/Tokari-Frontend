@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 // import { Pacifico } from 'next/font/google';
 import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 
 // const pacifico = Pacifico({
 //   subsets: ['latin'],
@@ -77,6 +78,7 @@ export default function HeroGeometric({
   title1 = 'Skip the Tokens,',
   title2 = 'Keep the Power',
 }) {
+  const navigate = useNavigate();
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i) => ({
@@ -198,11 +200,11 @@ export default function HeroGeometric({
             className="flex flex-col justify-center gap-4 sm:flex-row"
           >
             <Button
-              onClick={() => window.open('https://www.tally.so/r/npqG0y', '_blank')}
+              onClick={() => navigate('/signup')}
               size="lg"
               className="rounded-full border-none bg-gradient-to-r from-primary to-blue-500 shadow-md shadow-primary/10 hover:from-primary/90 hover:to-blue-500/90"
             >
-              Join Waitlist
+              Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
