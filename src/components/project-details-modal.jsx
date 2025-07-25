@@ -29,13 +29,13 @@ const ProjectDetailsModal = ({ trigger, title, desc,  id }) => {
   return (
     <Dialog>
       <DialogTrigger>{trigger}</DialogTrigger>
-      <DialogContent>
+      <DialogContent className="min-w-[90%] lg:min-w-[70%] overflow-x-auto h-[90vh]">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>{desc}</DialogDescription>
 
-          <Tabs defaultValue="basic" className="w-full mt-4">
-            <TabsList>
+          <Tabs defaultValue="basic" className="w-full mt-4 rounded-none">
+            <TabsList className="rounded-none px-6 space-x-4">
               <TabsTrigger value="basic">Basic</TabsTrigger>
               <TabsTrigger value="integration">Integration</TabsTrigger>
               <TabsTrigger value="settings">Settings</TabsTrigger>
@@ -147,7 +147,7 @@ const IntegrationTabSection = ({ project }) => {
         </div>
       </div>
 
-      <div className="max-w-[420px] w-[400px] overflow-x-auto mt-6">
+      <div className="w-full overflow-x-scroll mt-6">
         <CodeSnippets project={project} />
       </div>
     </section>

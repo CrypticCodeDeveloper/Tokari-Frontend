@@ -25,7 +25,7 @@ const CodeSnippets = ({ project, className}) => {
   <CodeBlock
     data={code}
     defaultValue={code[0].language}
-    className={`mt-6 ${className}`}
+    className={`mt-6 !min-w-[200px] ${className}`}
   >
     <CodeBlockHeader>
       <CodeBlockFiles>
