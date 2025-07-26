@@ -158,14 +158,14 @@ export default function Header() {
 
           <div className="hidden items-center space-x-4 lg:flex">
             <NavLink
-              to="/signup"
+              to="/login"
               className="font-medium text-foreground transition-colors duration-200 hover:text-blue-500"
             >
               Sign In
             </NavLink>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <NavLink
-                to="/login"
+                to="/signup"
                 className="inline-flex items-center space-x-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 px-6 py-2.5 font-medium text-white transition-all duration-200 hover:shadow-lg"
               >
                 <span>Get Started</span>
@@ -210,14 +210,14 @@ export default function Header() {
                 ))}
                 <div className="space-y-2 px-4 py-2">
                   <NavLink
-                    to="/"
+                    to="/login"
                     className="block w-full rounded-lg py-2.5 text-center font-medium text-foreground transition-colors duration-200 hover:bg-muted"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Sign In
                   </NavLink>
                   <NavLink
-                    to="https://www.tally.so/r/npqG0y"
+                    to="/signup"
                     className="block w-full rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
